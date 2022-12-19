@@ -56,8 +56,9 @@ class Tictactoe():
                 winnerName=self.playerX.name
             elif self.winner=="0":
                 winnerName=self.playerO.name
-            hint="Player{} win the game!".format(self.currentplayer.get_name())
+            hint="Player {} win the game!".format(self.currentplayer.get_name())
         self.database.record_game(self.playerX.name,self.playerO.name,winnerName)
+
         return hint
 
 

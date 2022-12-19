@@ -18,30 +18,37 @@ const chess33 = document.querySelector('chess33');
 chess33.addEventListener('click', function (){Move(chess33,2,2)});
 
 const player = document.querySelector('playerchess');
+const result=document.querySelector('result')
+let gamecontinue=true
 
 function Move(chess,x,y) {
-    if ((!(chess.textContent==="X")) &&(!(chess.textContent==="O") )){
+    if ((!(chess.textContent==="X")) &&(!(chess.textContent==="O") )&&(gamecontinue)){
         chess.textContent=player.textContent;
+        const xhr = new XMLHttpRequest();
+        xhr.open("POST", '/play_move', true);
+        xhr.setRequestHeader('Content-Type', 'application/json');
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                var json = JSON.parse(xhr.responseText);
+                change_page(json);
+            }
+        };
+        xhr.send(JSON.stringify({
+            x: x,
+            y: y
+        }));
     }
-    const xhr = new XMLHttpRequest();
-    xhr.open("POST", '/play_move', true);
-    xhr.setRequestHeader('Content-Type', 'application/json');
-    xhr.onreadystatechange = function () {
-        if (xhr.readyState === 4 && xhr.status === 200) {
-            var json = JSON.parse(xhr.responseText);
-            player.textContent=data.sta;
-            change_page(json);
-        }
-    };
-    xhr.send(JSON.stringify({
-        x: x,
-        y: y
-    }));
 
 }
 
 function change_page(data){
-    if(data["sta"]==="None"){
-        player.textContent=data.chess;
+    if(data["sta"]===" "){
+        player.textContent=data["chess"];
     }
+    else{
+        result.textContent=data["sta"]
+        document.getElementById("continue").style.display="block";
+        gamecontinue=false
+    }
+    //player.textContent=data["sta"];
 }

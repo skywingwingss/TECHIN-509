@@ -87,3 +87,4 @@ class Database():
         df.set_index(["player"], inplace=True)
         self.df=df
         self.write_data()
+

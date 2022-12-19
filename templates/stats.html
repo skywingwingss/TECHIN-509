@@ -3,45 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css')}}">
 </head>
 <body>
 <h1><strong>Statistic</strong></h1>
-<table>
-    <tr>
-        <td>Tim</td>
-        <td>100%</td>
-    </tr>
-    <tr>
-        <td>b</td>
-        <td>80%</td>
-    </tr>
-    <tr>
-        <td>c</td>
-        <td>75%</td>
-    </tr>
-    <tr>
-        <td>Iok</td>
-        <td>50%</td>
-    </tr>
-    <tr>
-        <td>a</td>
-        <td>30%</td>
-    </tr>
-    <tr>
-        <td>AI</td>
-        <td>0%</td>
-    </tr>
-    <tr>
-        <td>Toke</td>
-        <td>0%</td>
-    </tr>
-    <tabcaption>
-        Leaderboard
-    </tabcaption>
-</table>
+<rank><pre>{{rank}}</pre></rank>
+<!--<table>-->
+<!--    <tr>-->
+<!--        <td>Tim</td>-->
+<!--        <td>100%</td>-->
+<!--    </tr>-->
+<!--    <tr>-->
+<!--        <td>b</td>-->
+<!--        <td>80%</td>-->
+<!--    </tr>-->
+<!--    <tr>-->
+<!--        <td>c</td>-->
+<!--        <td>75%</td>-->
+<!--    </tr>-->
+<!--    <tr>-->
+<!--        <td>Iok</td>-->
+<!--        <td>50%</td>-->
+<!--    </tr>-->
+<!--    <tr>-->
+<!--        <td>a</td>-->
+<!--        <td>30%</td>-->
+<!--    </tr>-->
+<!--    <tr>-->
+<!--        <td>AI</td>-->
+<!--        <td>0%</td>-->
+<!--    </tr>-->
+<!--    <tr>-->
+<!--        <td>Toke</td>-->
+<!--        <td>0%</td>-->
+<!--    </tr>-->
+<!--    <tabcaption>-->
+<!--        Leaderboard-->
+<!--    </tabcaption>-->
+<!--</table>-->
 <figure>
-    <img src="StatsPic/win_rate.png"
+    <img src="{{ url_for('static', filename='win_rate.png')}}"
          alt="win_rate"
          width="400"
          height="341"
@@ -51,7 +52,7 @@
     </figcaption>
 </figure>
 <figure>
-    <img src="StatsPic/win_percent.png"
+    <img src="{{ url_for('static', filename='win_percent.png')}}"
          alt="win_percent"
          width="400"
          height="341"
@@ -61,7 +62,7 @@
     </figcaption>
 </figure>
 <figure>
-    <img src="StatsPic/globalstats.png"
+    <img src="{{ url_for('static', filename='globalstats.png')}}"
          alt="globalstats"
          width="400"
          height="341"

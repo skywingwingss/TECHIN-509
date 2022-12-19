@@ -1,9 +1,10 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, jsonify
 from Game_server import Tictactoe
 from Game_server import Human
 from Gameandplayer import AI
 import json
 import logic
+from Statistic import update_StatisticalPic
 
 
 Game=""
@@ -21,8 +22,8 @@ def start():
 @app.route('/index_playinfo',methods=['POST'])
 def GameStart():
 
-    player1=request.args.get('player1_name')
-    player2=request.args.get('player1_name')
+    player1=request.form.get('player1_name')
+    player2=request.form.get('player2_name')
     if player2=="":
         #AI mode
         playerX = Human("X",player1)
@@ -72,12 +73,20 @@ def Move():
     win=not Game.game_not_over()
 
     if win or Game.is_draw():
-        return json.dumps({"sta":Game.end(),"chess":Game.currentplayer.get_chess()})
+        sta=Game.end()
+        update_StatisticalPic()
+        return json.dumps({"sta":sta,"chess":Game.currentplayer.get_chess()})
 
     Game.winner = logic.check_winner(Game.board)
     Game.other_player()
 
-    return {"sta":None,"chess":Game.currentplayer.get_chess()}
+    return jsonify({"sta":" ","chess":Game.currentplayer.get_chess()})
+
+@app.route('/stats',methods=['POST'])
+def show_stats():
+    global Game
+    rank=Game.database.get_globalrank()
+    return render_template("stats.html",rank=rank)
 
 
 
