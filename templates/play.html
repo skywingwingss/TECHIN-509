@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Table template</title>
+    <link href="{{ url_for('static', filename='styles.css')}}" rel="stylesheet" type="text/css">
+    <script src="{{ url_for('static', filename='play.js')}}" async></script>
+</head>
+<body>
+<h1><strong>Game Board</strong></h1>
+<tip1>Tap blank to make a move. Your chess is <playerchess>{{chess}}</playerchess></tip1>
+<table>
+    <tr>
+        <td><pre><chess11>{{p_11}}</chess11></pre></td>
+        <td><pre><chess21>{{p_21}}</chess21></pre></td>
+        <td><pre><chess31>{{p_31}}</chess31></pre></td>
+    </tr>
+    <tr>
+        <td><pre><chess12>{{p_12}}</chess12></pre></td>
+        <td><pre><chess22>{{p_22}}</chess22></pre></td>
+        <td><pre><chess32>{{p_32}}</chess32></pre></td>
+    </tr>
+    <tr>
+        <td><pre><chess13>{{p_13}}</chess13></pre></td>
+        <td><pre><chess23>{{p_23}}</chess23></pre></td>
+        <td><pre><chess33>{{p_33}}</chess33></pre></td>
+    </tr>
+</table>
+<st><pre>{{status}}</pre></st>
+</body>
+</html>

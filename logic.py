@@ -85,7 +85,15 @@ def roundadd(num,upbound, lowbound):
     return num
 
 
-
+################for server#############
+#Perform a move on the board
+def moveChess_server(board,player,x,y):
+    print(board)
+    x,y=player.get_move(board)
+    if (x,y)==(-1,-1):
+        return False
+    board.set(x,y,player.get_chess())
+    return True
 
 
 ##########################################

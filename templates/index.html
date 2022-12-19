@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css')}}">
+</head>
+<body>
+<form action="/index_playinfo" method="post">
+    <form action="/index_playinfo" method="post">
+        <ul>
+            <li>
+                Please input player's Name, Leave player 2 blank if you want to play with an AI.
+            </li>
+            <li>
+                <label for="player1">Name of Player 1:</label>
+                <input type="text" id="player1" name="player1_name">
+            </li>
+            <li>
+                <label for="player2">Name of Player 2:</label>
+                <input type="text" id="player2" name="player2_name">
+            </li>
+            <button type="submit">
+                <strong>Start Game!</strong>
+            </button>
+
+        </ul>
+</form>
+</body>
+</html>
