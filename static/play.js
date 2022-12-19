@@ -29,7 +29,8 @@ function Move(chess,x,y) {
     xhr.onreadystatechange = function () {
         if (xhr.readyState === 4 && xhr.status === 200) {
             var json = JSON.parse(xhr.responseText);
-            console.log(json.email + ", " + json.password);
+            player.textContent=data.sta;
+            change_page(json);
         }
     };
     xhr.send(JSON.stringify({
@@ -39,4 +40,8 @@ function Move(chess,x,y) {
 
 }
 
-function change_page()
+function change_page(data){
+    if(data["sta"]==="None"){
+        player.textContent=data.chess;
+    }
+}

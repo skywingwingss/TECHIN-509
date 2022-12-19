@@ -72,12 +72,12 @@ def Move():
     win=not Game.game_not_over()
 
     if win or Game.is_draw():
-        return render_template("play.html",status=Game.end())
+        return json.dumps({"sta":Game.end(),"chess":Game.currentplayer.get_chess()})
 
     Game.winner = logic.check_winner(Game.board)
     Game.other_player()
 
-    return render_template("play.html")
+    return {"sta":None,"chess":Game.currentplayer.get_chess()}
 
 
 
